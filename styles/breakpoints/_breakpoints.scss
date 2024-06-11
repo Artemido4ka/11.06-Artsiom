@@ -1,0 +1,17 @@
+@import "../variables/variables";
+
+@mixin lg {
+  @media screen and (max-width: $breakpoint_lg) {
+    @content;
+  }
+}
+@mixin md {
+  @media screen and (max-width: $breakpoint_md) {
+    @content;
+  }
+}
+@mixin sm {
+  @media screen and (max-width: $breakpoint_sm) {
+    @content;
+  }
+}
