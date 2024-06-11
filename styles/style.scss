@@ -8,9 +8,12 @@
     url("/fonts/Manrope/static/Manrope-Medium.ttf") format("ttf");
 }
 
-body,
-body * {
+body {
   font-family: "Manrope", Arial, Helvetica, sans-serif;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .container {
@@ -21,58 +24,62 @@ body * {
 
   .content {
     border-radius: 10px;
-    background: #f0f4fc;
+    background: $blue-white;
     display: flex;
     @include md {
       flex-direction: column;
     }
 
     .interaction {
-      //   width: 100%;
-
       &__title {
         margin-bottom: 16px;
         font-weight: 500;
         font-size: 20px;
         line-height: 160%;
-        color: #1f4284;
+        color: $blue-purple;
       }
       &__text {
         font-weight: 400;
         font-size: 15px;
         line-height: 160%;
-        color: #727272;
+        color: $primary-grey;
         text-wrap: wrap;
       }
       padding: 52px 72px;
       @include md {
         padding: 24px;
       }
-
       .button {
+        cursor: pointer;
         margin-top: 36px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         border-radius: 60px;
         padding: 12px 12px 12px 24px;
-
         height: 68px;
-        background: #244c98;
+        background: $blue-purple-light;
         border: none;
-
-        &__text {
-          color: white;
+        .text {
+          color: $white;
         }
-        &__circle {
+        .circle {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: white;
+          background: $white;
           width: 36px;
           height: 36px;
           border-radius: 50%;
         }
+        &:hover {
+          background: $white;
+          border: 1px solid $blue-purple-light;
+          .text {
+            color: $blue-purple;
+          }
+        }
+
         font-size: 18px;
         width: 341px;
         @include md {
@@ -95,4 +102,120 @@ body * {
       object-fit: cover;
     }
   }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  background: $blue-white;
+  width: 500px;
+  padding: 24px;
+  @include md {
+    width: 300px;
+  }
+  &__button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: $white;
+    width: 52px;
+    height: 52px;
+    border: none;
+    &:hover {
+      border: 1px solid $dark;
+    }
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    &__title {
+      font-weight: 500;
+      font-size: 24px;
+      color: $dark;
+      margin-bottom: 18px;
+    }
+    .input {
+      border-radius: 10px;
+      padding: 24px;
+      background: #d7e2f6;
+      border: none;
+      box-shadow: 6px 4px 5px 0px rgba(199, 199, 199, 0.7);
+      margin-bottom: 4px;
+      &::placeholder {
+        color: $blue-purple-light;
+        opacity: 1;
+      }
+      &:hover {
+        background: $blue-white-secondary;
+      }
+    }
+    .link {
+      color: $blue-purple-light;
+      margin-bottom: 36px;
+      text-decoration: none;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .button {
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      height: 65px;
+      justify-content: center;
+      align-items: center;
+      border: none;
+    }
+    .primary {
+      background: $blue-purple-light;
+      color: $white;
+      border: 1px solid $blue-purple-light;
+      &:hover {
+        background: $white;
+        color: $blue-purple-light;
+      }
+    }
+    .secondary {
+      background: $white;
+      color: $blue-purple-light;
+      &:hover {
+        background: $primary-grey;
+        color: $white;
+      }
+    }
+    .checkbox {
+      cursor: pointer;
+      margin: 24px 4px 24px;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.hidden {
+  display: none;
 }

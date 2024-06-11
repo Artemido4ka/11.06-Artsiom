@@ -2,16 +2,25 @@
   font-family: "Manrope";
   src: url("/fonts/Manrope/Manrope-VariableFont_wght.ttf"), url("/fonts/Manrope/static/Manrope-Regular.ttf") format("ttf"), url("/fonts/Manrope/static/Manrope-Medium.ttf") format("ttf"); }
 
-body,
-body * {
-  font-family: "Manrope", Arial, Helvetica, sans-serif; }
+body {
+  font-family: "Manrope", Arial, Helvetica, sans-serif;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
 
 .container {
   padding: 40px 36px; }
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 24px; } }
   .container .content {
     border-radius: 10px;
     background: #f0f4fc;
     display: flex; }
+    @media screen and (max-width: 768px) {
+      .container .content {
+        flex-direction: column; } }
     .container .content .interaction {
       padding: 52px 72px; }
       .container .content .interaction__title {
@@ -26,7 +35,11 @@ body * {
         line-height: 160%;
         color: #727272;
         text-wrap: wrap; }
+      @media screen and (max-width: 768px) {
+        .container .content .interaction {
+          padding: 24px; } }
       .container .content .interaction .button {
+        cursor: pointer;
         margin-top: 36px;
         display: flex;
         align-items: center;
@@ -38,19 +51,127 @@ body * {
         border: none;
         font-size: 18px;
         width: 341px; }
-        .container .content .interaction .button__text {
-          color: white; }
-        .container .content .interaction .button__circle {
+        .container .content .interaction .button .text {
+          color: #ffffff; }
+        .container .content .interaction .button .circle {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: white;
+          background: #ffffff;
           width: 36px;
           height: 36px;
           border-radius: 50%; }
+        .container .content .interaction .button:hover {
+          background: #ffffff;
+          border: 1px solid #244c98; }
+          .container .content .interaction .button:hover .text {
+            color: #1f4284; }
+        @media screen and (max-width: 768px) {
+          .container .content .interaction .button {
+            width: 260px;
+            font-size: 15px; } }
+        @media screen and (max-width: 375px) {
+          .container .content .interaction .button {
+            width: 280px; } }
     .container .content .image {
       width: 100%; }
     .container .content .image img {
       width: 100%;
       height: 100%;
       object-fit: cover; }
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  background: #f0f4fc;
+  width: 500px;
+  padding: 24px; }
+  @media screen and (max-width: 768px) {
+    .modal {
+      width: 300px; } }
+  .modal__button-container {
+    display: flex;
+    justify-content: flex-end; }
+  .modal__button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #ffffff;
+    width: 52px;
+    height: 52px;
+    border: none; }
+    .modal__button:hover {
+      border: 1px solid #323232; }
+  .modal form {
+    display: flex;
+    flex-direction: column; }
+    .modal form__title {
+      font-weight: 500;
+      font-size: 24px;
+      color: #323232;
+      margin-bottom: 18px; }
+    .modal form .input {
+      border-radius: 10px;
+      padding: 24px;
+      background: #d7e2f6;
+      border: none;
+      box-shadow: 6px 4px 5px 0px rgba(199, 199, 199, 0.7);
+      margin-bottom: 4px; }
+      .modal form .input::placeholder {
+        color: #244c98;
+        opacity: 1; }
+      .modal form .input:hover {
+        background: #cbced4; }
+    .modal form .link {
+      color: #244c98;
+      margin-bottom: 36px;
+      text-decoration: none; }
+    .modal form .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 4px; }
+    .modal form .button {
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      height: 65px;
+      justify-content: center;
+      align-items: center;
+      border: none; }
+    .modal form .primary {
+      background: #244c98;
+      color: #ffffff;
+      border: 1px solid #244c98; }
+      .modal form .primary:hover {
+        background: #ffffff;
+        color: #244c98; }
+    .modal form .secondary {
+      background: #ffffff;
+      color: #244c98; }
+      .modal form .secondary:hover {
+        background: #727272;
+        color: #ffffff; }
+    .modal form .checkbox {
+      cursor: pointer;
+      margin: 24px 4px 24px; }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1; }
+
+.hidden {
+  display: none; }
