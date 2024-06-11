@@ -15,11 +15,17 @@ body * {
 
 .container {
   padding: 40px 36px;
+  @include md {
+    padding: 24px;
+  }
 
   .content {
     border-radius: 10px;
     background: #f0f4fc;
     display: flex;
+    @include md {
+      flex-direction: column;
+    }
 
     .interaction {
       //   width: 100%;
@@ -39,6 +45,9 @@ body * {
         text-wrap: wrap;
       }
       padding: 52px 72px;
+      @include md {
+        padding: 24px;
+      }
 
       .button {
         margin-top: 36px;
@@ -66,6 +75,13 @@ body * {
         }
         font-size: 18px;
         width: 341px;
+        @include md {
+          width: 260px;
+          font-size: 15px;
+        }
+        @include sm {
+          width: 280px;
+        }
       }
     }
 
